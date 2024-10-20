@@ -16,7 +16,7 @@ class RSIBot(BaseBot):
     # This function use to init the global variable of the bot
     # example : rsi_indicator = RSIIndicator(14)
     def init(self, config: Dict[str, str]) -> None:
-        self.rsi_period = int(config['rsi_period'])
+        self.rsi_period = int(config['rsi'])
         self.tp = float(config.get("tp", 1.05))
         self.sl = float(config.get("sl", 0.95))
         nd_closes = numpy.array(self.bar_series.closes, dtype=np.double)
