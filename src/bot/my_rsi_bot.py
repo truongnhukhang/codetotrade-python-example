@@ -3,6 +3,8 @@ from typing import Dict
 import numpy
 import numpy as np
 from coin_algorithm.domain.base_bot import BaseBot
+from coin_algorithm.domain.chart import Chart
+from coin_algorithm.domain.plot import Plot
 from coin_algorithm.domain.trade_metadata import TradeMetadata
 from talib import abstract
 
@@ -22,6 +24,13 @@ class RSIBot(BaseBot):
         nd_closes = numpy.array(self.bar_series.closes, dtype=np.double)
         # ta-lib document https://github.com/TA-Lib/ta-lib-python/blob/master/docs/func_groups/momentum_indicators.md
         self.rsi_indicator = abstract.RSI(nd_closes, self.rsi_period)
+        # Create the RSI chart panel
+        rsi_chart = Chart(is_overlay=False, name="RSI")
+        # Draw the RSI line from the RSI indicator and bar_series
+        rsi_chart.add_plot(Plot(name="RSI-{}".format(self.rsi_period), color="#FFD1DC", bar_series=self.bar_series,
+                                indicator_values=numpy.nan_to_num(self.rsi_indicator).tolist()))
+        # Add the RSI chart to the chart list
+        self.chart_list.append(rsi_chart)
 
     # This function use to check the condition to buy at the specific candle
     # candle_at_idx = self.bar_series.bars[idx]
