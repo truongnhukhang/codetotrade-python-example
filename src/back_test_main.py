@@ -14,7 +14,7 @@ def main():
    # log start back test server
    logger = logging.getLogger("main")
    logger.info("Starting back test server")
-   back_test_server.serve(port='8888', bot_module='bot.my_rsi_bot', bot_class='RSIBot')
+   back_test_server.serve(port='8888', bot_module='bot.my_macd_bot', bot_class='MyMacdBot')
 
 
 if __name__ == '__main__':
