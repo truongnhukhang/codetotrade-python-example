@@ -21,13 +21,13 @@ class MyMacdBot(BaseBot):
         self.macd, self.macdsignal, self.macdhist = abstract.MACD(nd_closes, fastperiod=fast, slowperiod=slow, signalperiod=signal)
 
     def is_buy(self, idx: int) -> bool:
-        if self.macd[idx] > self.macdsignal[idx] and self.macd[idx-1] <= self.macdsignal[-1]:
+        if self.macd[idx] > self.macdsignal[idx] and self.macd[idx-1] <= self.macdsignal[idx-1]:
             if self.rsi[idx] < 70:
                 return True
         return False
 
     def is_sell(self, idx: int) -> bool:
-        if self.macd[idx] < self.macdsignal[idx] and self.macd[idx - 1] >= self.macdsignal[-1]:
+        if self.macd[idx] < self.macdsignal[idx] and self.macd[idx - 1] >= self.macdsignal[idx-1]:
             if self.rsi[idx] > 30:
                 return True
         return False
