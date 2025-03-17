@@ -52,8 +52,8 @@ class MyMultiTimeframeMacdBot(BaseBot):
             take_profit_price=current_bar.close * (1 + self.tp/100),
             stop_loss_price=current_bar.close * (1 - self.sl/100),
             trade_log="MyMacdBot Buy, MACD-SIGNAL:{:.6f}-{:.6f},PREV(MACD-SIGNAL):{:.6f}-{:.6f}, RSI: {:.6f}".format(
-                self.macd[idx],
-                self.macdsignal[idx],
+                self.macd[idx_1h],
+                self.macdsignal[idx_1h],
                 self.macd[idx_1h - 1],
                 self.macdsignal[idx_1h - 1],
                 self.rsi[idx]
