@@ -14,7 +14,7 @@ def main():
    # log start back test server
    logger = logging.getLogger("main")
    logger.info("Starting back test server")
-   back_test_server.serve(port='8888', bot_module='bot.my_charting_bot', bot_class='MyChartingBot')
+   back_test_server.serve(port='8888', bot_module='bot.my_multi_timeframe_macd_bot', bot_class='MyMultiTimeframeMacdBot')
 
 
 if __name__ == '__main__':
